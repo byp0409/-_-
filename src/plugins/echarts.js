@@ -128,6 +128,52 @@ const install = function (Vue) {
             // 使用刚指定的配置项和数据显示地图数据
             rateChart.setOption(chartOption);
           },
+          chart1(id, date, value, name) {
+            var rateChart = echarts.init(document.getElementById(id));
+            var chartOption = {
+              // 设置表名
+              title: {
+                // 之后把这写成变量，传name
+                text: name,
+                // 设置文本样式
+                textStyle: {
+                  fontSize: 16,
+                },
+                // 设置文本位置
+                left: 20,
+                top: 10,
+              },
+              xAxis: {
+                type: 'category',
+                data: date,
+                axisLabel: {
+                  // 开启后让最后一个坐标显示为最后一个数据
+                  showMaxLabel: true,
+                },
+              },
+              yAxis: {
+                type: 'value',
+              },
+              // 调整图表大小
+              grid: {
+                // x，y是左上角坐标位置
+                x: 55,
+                y: 45,
+                // x2,y2是右下角坐标位置
+                x2: 20,
+                y2: 20,
+                borderWidth: 1,
+              },
+              series: [
+                {
+                  data: value,
+                  type: 'line',
+                  smooth: true,
+                },
+              ],
+            };
+            rateChart.setOption(chartOption);
+          },
         };
       },
     },

@@ -16,6 +16,12 @@ import mock from './mock';
 //     url: 'https://yupn.api.storeapi.net/api/94/219?appid=15900&sign=0ef4dab158db0aa765fdec5ed4c5f9bb',
 //     method: 'GET',
 //   });
+
+// // 请求国内疫情历史数据，chinaDayAddList是每日新增数据，chinaDayList累计数据，第三个不知道是啥
+// export const reqHistory = () =>
+//   requests.get(
+//     'https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,nowConfirmStatis,ProvinceCompare'
+//   );
 /********************************************************************/
 
 /***********************请求mock数据********************************* */
@@ -26,9 +32,11 @@ export const reqNcov = query =>
     query,
   });
 
-// 请求国内详细疫情信息,appid是申请接口给的id，sign是生成的密钥  每天只能用100次
+// 请求国内详细疫情信息,appid是申请接口给的id，sign是生成的密钥
 export const ChinaData = () =>
   mock({
     url: '/ChinaData',
     method: 'GET',
   });
+
+export const reqHistory = () => mock({ url: '/HistoryData', method: 'GET' });

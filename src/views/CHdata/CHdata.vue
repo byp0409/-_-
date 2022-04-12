@@ -10,7 +10,7 @@
     </div>
     <!-- 疫情数据，这部分数据在desc里，数据命名有点复杂 -->
     <!-- 替换数据时对着api接口的文档写 -->
-    <div class="table">
+    <div class="nav">
       <ul>
         <li>
           <span>
@@ -72,7 +72,7 @@
       </a>
     </div>
     <div class="line"></div>
-    <!-- 数据表格 -->
+    <!-- 标题 -->
     <div class="datatable">
       <div class="title">
         <div class="left">
@@ -85,6 +85,34 @@
         </div>
       </div>
     </div>
+    <Carrousel />
+    <!-- 数据表格 -->
+    <div class="table">
+      <!-- 表头 -->
+      <div class="title">
+        <span>地区</span>
+        <span>现存确诊</span>
+        <span>累计确诊</span>
+        <span>死亡</span>
+        <span>治愈</span>
+      </div>
+      <!-- 表体 -->
+      <div>
+        <!-- 总体信息 -->
+        <div class="th">
+          <span>
+            <img src="@/assets/images/down.png" alt="" />
+            澳门
+          </span>
+          <span>0</span>
+          <span>82</span>
+          <span>0</span>
+          <span>82</span>
+        </div>
+        <!-- 详细信息 -->
+        <div class="tb"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -92,8 +120,12 @@
 import { mapGetters } from 'vuex';
 import { time } from '@/mixins/index';
 import { commafy, sign } from '@/util/tools';
+import Carrousel from './Carrousel/Carrousel.vue';
 export default {
   name: 'CHdata',
+  mounted() {
+    this.$store.dispatch('china/reqHistory');
+  },
   mixins: [time],
   methods: {
     // 千分位格式化
@@ -107,6 +139,9 @@ export default {
   },
   computed: {
     ...mapGetters('home', ['desc']),
+  },
+  components: {
+    Carrousel,
   },
 };
 </script>
@@ -139,7 +174,7 @@ export default {
       }
     }
   }
-  .table {
+  .nav {
     height: 38.1333vw;
     border: 1px solid #ebebeb;
     box-shadow: 0 0.2667vw 0.5333vw 0 #ebebeb;
@@ -303,6 +338,53 @@ export default {
       .right {
         font-size: 3.2vw;
         color: #999;
+      }
+    }
+  }
+  .table {
+    .title {
+      display: flex;
+      span {
+        flex: 1;
+        text-align: center;
+        height: 8.5333vw;
+        // padding: 2.3vw 0;
+        line-height: 8.5333vw;
+        background-color: rgb(227, 231, 243);
+        border-right: 0.2667vw solid #fff;
+        font-size: 3.4667vw;
+        font-weight: 700;
+        &:nth-child(2) {
+          background-color: rgb(243, 186, 176);
+        }
+        &:nth-child(3) {
+          background-color: rgb(230, 154, 141);
+        }
+        &:nth-child(4) {
+          background-color: rgb(180, 192, 213);
+        }
+        &:nth-child(5) {
+          background-color: rgb(149, 219, 154);
+        }
+      }
+    }
+    .th {
+      display: flex;
+      height: 8.5333vw;
+      line-height: 8.5333vw;
+      background-color: rgb(247, 247, 247);
+      span {
+        flex: 1;
+        position: relative;
+        text-align: center;
+        border-right: 0.2667vw solid #fff;
+        img {
+          position: absolute;
+          top: 3.2vw;
+          left: 1.6vw;
+          width: 2.1333vw;
+          height: 1.6vw;
+        }
       }
     }
   }
