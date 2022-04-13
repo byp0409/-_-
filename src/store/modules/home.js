@@ -50,10 +50,16 @@ export default {
     riskarea(state) {
       return state.newslist.riskarea || {};
     },
-    // 排序后的国内数据
+    // 排序后的国内数据--依据昨日新增
     sortretdata(state) {
       return state.retdata.sort((a, b) => {
         return b.nativeRelative - a.nativeRelative || [];
+      });
+    },
+    // 排序后的国内数据--依据现存确诊
+    sortretdatanow(state) {
+      return state.retdata.sort((a, b) => {
+        return b.curConfirm - a.curConfirm || [];
       });
     },
   },

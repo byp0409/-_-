@@ -4,8 +4,8 @@
     <div>
       <router-link to="/home/arearisk" class="item">地区风险</router-link>
       <router-link to="/home/chdata" class="item">国内数据</router-link>
+      <router-link to="/home/othercity" class="item">其他国家</router-link>
       <router-link to="/home/globaldata" class="item">全球数据</router-link>
-      <router-link to="/home/vaccine" class="item">新冠疫苗</router-link>
     </div>
   </div>
 </template>

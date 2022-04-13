@@ -1,10 +1,10 @@
 <template>
-  <div>新冠疫苗</div>
+  <div>其他国家</div>
 </template>
 
 <script>
 export default {
-  name: 'Vaccine',
+  name: 'OtherCity',
 };
 </script>
 

@@ -97,20 +97,28 @@
         <span>治愈</span>
       </div>
       <!-- 表体 -->
-      <div>
+      <div v-for="(item, index) in sortretdatanow" :key="index">
         <!-- 总体信息 -->
-        <div class="th">
+        <div class="th" @click="showtb(index)">
           <span>
             <img src="@/assets/images/down.png" alt="" />
-            澳门
+            {{ item.xArea }}
           </span>
-          <span>0</span>
-          <span>82</span>
-          <span>0</span>
-          <span>82</span>
+          <span>{{ format(item.curConfirm) }}</span>
+          <span>{{ format(item.confirm) }}</span>
+          <span>{{ format(item.died) }}</span>
+          <span>{{ format(item.heal) }}</span>
         </div>
         <!-- 详细信息 -->
-        <div class="tb"></div>
+        <div class="tb" v-show="index == i">
+          <div class="tr" v-for="(province, index) in item.subList" :key="index">
+            <span>{{ province.city }}</span>
+            <span>{{ format(province.curConfirm) }}</span>
+            <span>{{ format(province.confirm) }}</span>
+            <span>{{ format(province.died) }}</span>
+            <span>{{ format(province.heal) }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -123,11 +131,27 @@ import { commafy, sign } from '@/util/tools';
 import Carrousel from './Carrousel/Carrousel.vue';
 export default {
   name: 'CHdata',
+  data() {
+    return {
+      i: -1,
+      flag: 1,
+    };
+  },
   mounted() {
     this.$store.dispatch('china/reqHistory');
   },
   mixins: [time],
   methods: {
+    // 显示表体
+    showtb(i) {
+      if (this.flag == 1) {
+        this.i = i;
+        this.flag = 0;
+      } else if (this.flag == 0) {
+        this.i = -1;
+        this.flag = 1;
+      }
+    },
     // 千分位格式化
     format(num) {
       return commafy(num);
@@ -138,7 +162,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('home', ['desc']),
+    ...mapGetters('home', ['desc', 'sortretdatanow']),
   },
   components: {
     Carrousel,
@@ -342,6 +366,8 @@ export default {
     }
   }
   .table {
+    background-color: #fff;
+    padding-bottom: 3vw;
     .title {
       display: flex;
       span {
@@ -385,6 +411,16 @@ export default {
           width: 2.1333vw;
           height: 1.6vw;
         }
+      }
+    }
+    .tr {
+      display: flex;
+      height: 6.4vw;
+      span {
+        flex: 1;
+        text-align: center;
+        line-height: 6.4vw;
+        border-bottom: 0.2667vw solid rgb(235, 235, 235);
       }
     }
   }

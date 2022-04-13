@@ -24,8 +24,8 @@ export default [
         component: () => import('@/views/GlobalData/GlobalData.vue'),
       },
       {
-        path: 'vaccine',
-        component: () => import('@/views/Vaccine/Vaccine.vue'),
+        path: 'othercity',
+        component: () => import('@/views/OtherCity/OtherCity.vue'),
       },
     ],
   },
