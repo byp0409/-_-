@@ -94,7 +94,7 @@
 
 <script>
 import { time } from '@/mixins/index';
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import { commafy } from '@/util/tools';
 
 export default {

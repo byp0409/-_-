@@ -69,7 +69,7 @@ export default {
     swiper() {
       return this.$refs.mySwiper.$swiper;
     },
-    // 获取每日历史数据，
+    // 获取每日历史数据
     ...mapGetters('china', ['chinaDayAddList', 'chinaDayList']),
     // 整理统计图数据
     nearDay() {
@@ -106,14 +106,14 @@ export default {
   watch: {
     nearDay(value) {
       // id data name
-      this.$Chart.chart1('chart1', value[0], value[1], '全国新增确诊');
-      this.$Chart.chart1('chart2', value[0], value[2], '全国新增境外输入');
+      this.$Chart.chart('chart1', value[0], value[1], '全国新增确诊');
+      this.$Chart.chart('chart2', value[0], value[2], '全国新增境外输入');
     },
     historyDay(value) {
       // console.log(this.historyDay);
-      this.$Chart.chart1('chart3', value[0], value[1], '现存确诊');
-      this.$Chart.chart1('chart4', value[0], value[2], '累计治愈');
-      this.$Chart.chart1('chart5', value[0], value[3], '累计死亡');
+      this.$Chart.chart('chart3', value[0], value[1], '现存确诊');
+      this.$Chart.chart('chart4', value[0], value[2], '累计治愈');
+      this.$Chart.chart('chart5', value[0], value[3], '累计死亡');
     },
   },
 };

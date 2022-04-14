@@ -128,7 +128,7 @@ const install = function (Vue) {
             // 使用刚指定的配置项和数据显示地图数据
             rateChart.setOption(chartOption);
           },
-          chart1(id, date, value, name) {
+          chart(id, xAxis, yAxis, name) {
             var rateChart = echarts.init(document.getElementById(id));
             var chartOption = {
               // 设置表名
@@ -145,7 +145,7 @@ const install = function (Vue) {
               },
               xAxis: {
                 type: 'category',
-                data: date,
+                data: xAxis,
                 axisLabel: {
                   // 开启后让最后一个坐标显示为最后一个数据
                   showMaxLabel: true,
@@ -157,7 +157,7 @@ const install = function (Vue) {
               // 调整图表大小
               grid: {
                 // x，y是左上角坐标位置
-                x: 55,
+                x: 80,
                 y: 45,
                 // x2,y2是右下角坐标位置
                 x2: 20,
@@ -166,7 +166,7 @@ const install = function (Vue) {
               },
               series: [
                 {
-                  data: value,
+                  data: yAxis,
                   type: 'line',
                   smooth: true,
                 },

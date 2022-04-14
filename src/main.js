@@ -15,6 +15,10 @@ import '@/plugins/vant';
 import '@/mock/mockserve';
 // 引入swiper
 import '@/plugins/swiper';
+// 注册全局组件,顶部标题
+import TopBar from '@/components/TopBar/TopBar.vue';
+Vue.component('TopBar', TopBar);
+
 Vue.config.productionTip = false;
 new Vue({
   router,

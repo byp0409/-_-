@@ -4,8 +4,10 @@ import Mock from 'mockjs';
 import ChinaData from './ChinaData.json';
 import Ncov from './Ncov.json';
 import HistoryData from './HistoryData.json';
+import Global from './Global.json';
 // Mock.mock('url',数据)
 
 Mock.mock('/mock/ChinaData', ChinaData);
 Mock.mock('/mock/Ncov', Ncov);
 Mock.mock('/mock/HistoryData', HistoryData);
+Mock.mock('/mock/Global', Global);

@@ -46,12 +46,7 @@
       </ul>
     </div>
     <!-- 重点国家 -->
-    <div class="title">
-      <div class="left">
-        <i></i>
-        <span>重点国家疫情数据</span>
-      </div>
-    </div>
+    <TopBar title="重点国家疫情数据" datatime="false" />
     <div class="focuscity">
       <!-- 表头 -->
       <div class="title">
@@ -73,12 +68,17 @@
         <span>{{ index + 1 }}</span>
       </div>
     </div>
-    <div class="title">
-      <div class="left">
-        <i></i>
-        <span>国外疫情趋势</span>
-      </div>
+    <TopBar title="国外疫情趋势" datatime="false" />
+    <!-- 数据来源声明 -->
+    <div class="declaration">
+      <p>1、3月19日之前使用 WHO 每日公布的数据（中欧标准时间 10:00）</p>
+      <p>2、3月19日开始由于 WHO 数据存在缺失问题，使用丁香园平台数据（北京时间 10:00）</p>
+      <p>3、4月24日起，西班牙卫生部调整新冠肺炎确诊数据口径，只发布由PCR检测确诊的数据</p>
     </div>
+    <!-- 数据轮播图 -->
+    <CarrouselChart :xAxis="theWorldTrend.updateDate" :yAxis="yAxis" :chartName="chartname" />
+    <!-- 全球各国数据 -->
+    <Table :tableHead="eachIsland" :dataName="dataName" />
   </div>
 </template>
 
@@ -86,14 +86,29 @@
 import { time } from '@/mixins/index';
 import { commafy } from '@/util/tools';
 import { mapGetters } from 'vuex';
+import CarrouselChart from './CarrouselChart/CarrouselChart.vue';
+import Table from '@/components/Table/Table.vue';
 export default {
   name: 'GlobalData',
+  data() {
+    return {
+      // 表名
+      // 没有进行类型限定的原因是异步数据第一次是空的，传进来报错
+      chartname: ['累计确诊', '治愈', '死亡', '现有确诊', '新增确诊'],
+      // 表头
+      dataName: ['地区', '现存确诊', '累计确诊', '死亡', '治愈'],
+    };
+  },
   mixins: [time],
   mounted() {
     this.$store.dispatch('global/reqGlobalData');
   },
   computed: {
-    ...mapGetters('global', ['totalData']),
+    ...mapGetters('global', ['totalData', 'theWorldTrend']),
+    // 截取各大洲数据,因为最后一个是热门数据
+    eachIsland() {
+      return this.totalData.slice(0, 7);
+    },
     // 顶部整体数据
     topNavData() {
       return this.totalData[7] || {};
@@ -101,9 +116,12 @@ export default {
     // 重点国家
     subList() {
       // 排序
-      return this.totalData[7].subList.sort((a, b) => {
-        return b.curConfirm - a.curConfirm;
-      });
+      console.log();
+      return this.topNavData.subList || [];
+    },
+    // y轴数据
+    yAxis() {
+      return this.theWorldTrend.xResult || [];
     },
   },
   methods: {
@@ -111,6 +129,10 @@ export default {
     format(num) {
       return commafy(num);
     },
+  },
+  components: {
+    CarrouselChart,
+    Table,
   },
 };
 </script>
@@ -147,6 +169,7 @@ export default {
     height: 20vw;
     border: 1px solid #ebebeb;
     box-shadow: 0 0.2667vw 0.5333vw 0 #ebebeb;
+    margin-bottom: 1.2667vw;
     ul {
       display: flex;
       li {
@@ -219,21 +242,12 @@ export default {
         }
       }
       li:nth-child(4) {
-        i {
-          color: rgb(174, 33, 44);
-        }
-        div {
-          color: rgb(174, 33, 44);
-        }
-      }
-      // 前后添加竖线
-      li:nth-child(5) {
         position: relative;
         i {
-          color: rgb(93, 112, 146);
+          color: rgb(174, 33, 44);
         }
         div {
-          color: rgb(93, 112, 146);
+          color: rgb(174, 33, 44);
         }
         &::before {
           content: '';
@@ -246,26 +260,6 @@ export default {
           background-color: rgb(228, 228, 228);
           // 颜色渐变，实现中间颜色深，两边颜色浅
           background-image: linear-gradient(180deg, #eee, #e1e1e1 51%, #fff);
-        }
-        &::after {
-          content: '';
-          display: block;
-          position: absolute;
-          top: 3.7333vw;
-          right: 0;
-          width: 0.2667vw;
-          height: 10.6667vw;
-          background-color: rgb(228, 228, 228);
-          // 颜色渐变，实现中间颜色深，两边颜色浅
-          background-image: linear-gradient(180deg, #eee, #e1e1e1 51%, #fff);
-        }
-      }
-      li:nth-child(6) {
-        i {
-          color: rgb(40, 183, 163);
-        }
-        div {
-          color: rgb(40, 183, 163);
         }
       }
     }
@@ -296,7 +290,6 @@ export default {
   }
   .focuscity {
     border-bottom: 1px solid rgb(246, 246, 246);
-    padding-bottom: 4.8vw;
     .title {
       height: 9.5333vw;
       span {
@@ -345,6 +338,11 @@ export default {
         text-align: center;
       }
     }
+  }
+  .declaration {
+    padding: 2.6667vw 2.3333vw;
+    margin-bottom: 4.2667vw;
+    background-color: rgb(255, 245, 236);
   }
 }
 </style>

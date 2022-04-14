@@ -74,16 +74,7 @@
     <div class="line"></div>
     <!-- 标题 -->
     <div class="datatable">
-      <div class="title">
-        <div class="left">
-          <i></i>
-          <span>国内疫情趋势</span>
-        </div>
-        <div class="right">
-          <!-- 静态数据，需要替换 -->
-          <span>截至北京时间{{ time }}</span>
-        </div>
-      </div>
+      <TopBar title="国内疫情趋势" />
     </div>
     <Carrousel />
     <!-- 数据表格 -->
@@ -128,7 +119,7 @@
 import { mapGetters } from 'vuex';
 import { time } from '@/mixins/index';
 import { commafy, sign } from '@/util/tools';
-import Carrousel from './Carrousel/Carrousel.vue';
+import Carrousel from '@/components/Carrousel/Carrousel.vue';
 export default {
   name: 'CHdata',
   data() {
