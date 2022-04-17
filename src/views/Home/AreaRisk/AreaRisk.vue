@@ -288,11 +288,11 @@ export default {
     }
   }
   .title {
+    top: 0;
     padding: 1.3333vw 4.2667vw 0;
     height: 13.0667vw;
     display: flex;
     justify-content: space-between;
-    // // align-items: center;
     line-height: 13.0667vw;
     text-align: center;
     .left {

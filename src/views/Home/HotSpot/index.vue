@@ -29,23 +29,23 @@
     </div>
     <!-- 底部小导航 -->
     <footer class="nav">
-      <a href="#" class="nav-item">
+      <router-link to="/askDoctor" class="nav-item">
         <img src="./images/footer1.png" alt="" />
         <span>问医生</span>
-      </a>
-      <a href="#" class="nav-item">
+      </router-link>
+      <router-link to="/detect" class="nav-item">
         <div class="hot"></div>
         <img src="./images/footer2.png" alt="" />
         <span>核酸检测</span>
-      </a>
-      <a href="#" class="nav-item">
+      </router-link>
+      <router-link to="/material" class="nav-item">
         <img src="./images/footer3.png" alt="" />
         <span>防疫物资</span>
-      </a>
-      <a href="#" class="nav-item">
+      </router-link>
+      <router-link to="/travel" class="nav-item">
         <img src="./images/footer4.png" alt="" />
-        <span>出行政策</span>
-      </a>
+        <span>疫情查询</span>
+      </router-link>
     </footer>
   </div>
 </template>
