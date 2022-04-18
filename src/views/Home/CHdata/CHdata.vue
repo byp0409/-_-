@@ -203,7 +203,7 @@ export default {
         align-items: center;
         margin-top: 2.6667vw;
         span {
-          font-size: 12px;
+          font-size: 3.2vw;
           color: #666;
         }
         div {
@@ -359,6 +359,7 @@ export default {
   .table {
     background-color: #fff;
     padding-bottom: 3vw;
+    font-size: 3.2vw;
     .title {
       display: flex;
       span {

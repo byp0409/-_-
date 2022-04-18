@@ -36,6 +36,7 @@ export default {
 .table {
   background-color: #fff;
   padding-bottom: 3vw;
+  font-size: 3.2vw;
   .title {
     display: flex;
     span {

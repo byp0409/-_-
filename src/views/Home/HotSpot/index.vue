@@ -44,7 +44,7 @@
       </router-link>
       <router-link to="/travel" class="nav-item">
         <img src="./images/footer4.png" alt="" />
-        <span>疫情查询</span>
+        <span>出行贴士</span>
       </router-link>
     </footer>
   </div>

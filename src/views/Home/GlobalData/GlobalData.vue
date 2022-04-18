@@ -179,7 +179,7 @@ export default {
         align-items: center;
         margin-top: 2.6667vw;
         span {
-          font-size: 12px;
+          font-size: 3.2vw;
           color: #666;
         }
         div {
@@ -343,6 +343,7 @@ export default {
     padding: 2.6667vw 2.3333vw;
     margin-bottom: 4.2667vw;
     background-color: rgb(255, 245, 236);
+    font-size: 3.2vw;
   }
 }
 </style>
