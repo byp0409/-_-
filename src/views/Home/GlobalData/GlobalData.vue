@@ -16,7 +16,7 @@
             较昨日
             <i>???</i>
           </span>
-          <div>{{ format(topNavData.curConfirm) }}</div>
+          <div>{{ format(newtop.currentConfirmedCount) }}</div>
           <strong>现存确诊</strong>
         </li>
         <li>
@@ -24,7 +24,7 @@
             较昨日
             <i>???</i>
           </span>
-          <div>{{ format(topNavData.confirm) }}</div>
+          <div>{{ format(newtop.confirmedCount) }}</div>
           <strong>累计确诊</strong>
         </li>
         <li>
@@ -32,7 +32,7 @@
             较昨日
             <i>???</i>
           </span>
-          <div>{{ format(topNavData.died) }}</div>
+          <div>{{ format(newtop.deadCount) }}</div>
           <strong>累计死亡</strong>
         </li>
         <li>
@@ -40,7 +40,7 @@
             较昨日
             <i>???</i>
           </span>
-          <div>{{ format(topNavData.heal) }}</div>
+          <div>{{ format(newtop.curedCount) }}</div>
           <strong>累计治愈</strong>
         </li>
       </ul>
@@ -105,6 +105,11 @@ export default {
   },
   computed: {
     ...mapGetters('global', ['totalData', 'theWorldTrend']),
+    ...mapGetters('home', ['desc']),
+    // 更换顶部数据
+    newtop() {
+      return this.desc.globalStatistics || {};
+    },
     // 截取各大洲数据,因为最后一个是热门数据
     eachIsland() {
       return this.totalData.slice(0, 7);

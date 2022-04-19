@@ -1,7 +1,15 @@
 <template>
   <!-- 防疫物资 -->
   <div class="material">
-    <van-nav-bar title="防疫物资" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar
+      title="防疫物资"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+      fixed
+      z-index="999"
+      placeholder
+    />
     <!-- 顶部 -->
     <div class="top">
       <img src="./images/top.png" alt="" />
@@ -115,7 +123,7 @@ export default {
     padding: 4.2667vw;
     .nav {
       position: sticky;
-      top: 0;
+      top: 12.2667vw;
       z-index: 1000;
       display: flex;
       justify-content: space-between;

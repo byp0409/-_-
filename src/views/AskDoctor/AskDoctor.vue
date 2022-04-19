@@ -1,7 +1,14 @@
 <template>
   <div class="askDoctor">
     <!-- 回退 -->
-    <van-nav-bar title="问医生" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar
+      title="问医生"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+      fixed
+      placeholder
+    />
     <!-- 主体部分 -->
     <div class="content">
       <!-- 类别 -->

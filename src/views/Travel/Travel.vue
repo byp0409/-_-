@@ -1,6 +1,13 @@
 <template>
   <div class="travel">
-    <van-nav-bar title="出行防护贴士" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <van-nav-bar
+      title="出行防护贴士"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+      fixed
+      placeholder
+    />
     <div class="content">
       <div class="title">
         <img src="./images/icon.png" alt="" />

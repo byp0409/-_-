@@ -13,52 +13,58 @@
     <div class="nav">
       <ul>
         <li>
-          <span>
+          <span v-if="desc.currentConfirmedIncr">
             较昨日
             <i>{{ addsign(desc.currentConfirmedIncr) }}</i>
           </span>
+          <span v-else>暂未更新数据</span>
           <div>
             {{ format(desc.currentConfirmedCount) }}
           </div>
           <strong>现存确诊</strong>
         </li>
         <li>
-          <span>
+          <span v-if="desc.currentConfirmedIncr">
             较昨日
             <i>{{ addsign(desc.yesterdaySuspectedCountIncr) }}</i>
           </span>
+          <span v-else>暂未更新数据</span>
           <div>{{ format(desc.suspectedCount) }}</div>
           <strong>境外输入</strong>
         </li>
         <li>
-          <span>
+          <span v-if="desc.currentConfirmedIncr">
             较昨日
             <i>{{ addsign(desc.seriousIncr) }}</i>
           </span>
+          <span v-else>暂未更新数据</span>
           <div>{{ format(desc.seriousCount) }}</div>
           <strong>现存无症状</strong>
         </li>
         <li>
-          <span>
+          <span v-if="desc.currentConfirmedIncr">
             较昨日
             <i>{{ addsign(desc.yesterdayConfirmedCountIncr) }}</i>
           </span>
+          <span v-else>暂未更新数据</span>
           <div>{{ format(desc.confirmedCount) }}</div>
           <strong>累计确诊</strong>
         </li>
         <li>
-          <span>
+          <span v-if="desc.currentConfirmedIncr">
             较昨日
             <i>{{ addsign(desc.deadIncr) }}</i>
           </span>
+          <span v-else>暂未更新数据</span>
           <div>{{ format(desc.deadCount) }}</div>
           <strong>累计死亡</strong>
         </li>
         <li>
-          <span>
+          <span v-if="desc.currentConfirmedIncr">
             较昨日
             <i>{{ addsign(desc.curedIncr) }}</i>
           </span>
+          <span v-else>暂未更新数据</span>
           <div>{{ format(desc.deadCount) }}</div>
           <strong>累计治愈</strong>
         </li>

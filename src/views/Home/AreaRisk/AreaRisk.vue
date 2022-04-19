@@ -16,13 +16,13 @@
       <div class="left">
         <p>
           高风险地区
-          <span class="high">{{ high.length }}</span>
+          <span class="high">{{ desc.highDangerCount }}</span>
           个
         </p>
         &nbsp;
         <p>
           中风险地区
-          <span class="mid">{{ mid.length }}</span>
+          <span class="mid">{{ desc.midDangerCount }}</span>
           个
         </p>
       </div>
@@ -145,7 +145,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('home', ['riskarea', 'sortretdata']),
+    ...mapGetters('home', ['riskarea', 'sortretdata', 'desc']),
     // 选出数据，解决报错
     mid() {
       return this.riskarea.mid || [];
