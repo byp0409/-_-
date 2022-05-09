@@ -89,6 +89,8 @@
         </van-tab>
       </van-tabs>
     </div>
+    <!-- 分割线 -->
+    <div class="split"></div>
   </div>
 </template>
 
@@ -314,6 +316,10 @@ export default {
   }
   .bgc {
     background-color: rgb(247, 247, 247);
+  }
+  .split {
+    height: 3vw;
+    background-color: #fff;
   }
 }
 </style>

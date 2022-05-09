@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <img src="./images/footer.png" alt="" />
+    <p>疫情简讯</p>
   </div>
 </template>
 
@@ -13,9 +13,13 @@ export default {
 <style lang="less" scoped>
 .footer {
   text-align: center;
-  img {
-    margin: 5.3333vw 0;
-    height: 8.2667vw;
+  margin: 5.3333vw 0;
+  height: 8.2667vw;
+  p {
+    font: 700 6.6667vw STXinwei;
+    color: #cccccc;
+    text-align: center;
+    line-height: 8.2667vw;
   }
 }
 </style>
