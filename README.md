@@ -1,9 +1,7 @@
-# vue-dxys
+# vue-yqjx
 
 ## 简介
-- 移动端
-- 该项目是模仿丁香医生疫情动态，由于没有官方数据接口，很多地方不能做到完全一致
-- 这是官方网址  http://ncov.dxy.cn/ncovh5/view/pneumonia
+- 移动端Web APP
 
 ## Project setup
 ```
